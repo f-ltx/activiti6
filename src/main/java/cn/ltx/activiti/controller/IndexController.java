@@ -1,14 +1,43 @@
 package cn.ltx.activiti.controller;
 
-import org.springframework.stereotype.Controller;
+import cn.ltx.activiti.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/")
+import java.util.Map;
+
+
+/**
+ * Created by admin on 17/6/16.
+ */
+
+@RestController
 public class IndexController {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	@RequestMapping("/index")
-	public String index() {
-		return "/index";
-	}
+    @GetMapping("/index")
+    public Object index() {
+        logger.debug("debug");
+        logger.info("info");
+        logger.warn("warn");
+        logger.error("error");
+        return "success";
+    }
+
+    @RequestMapping("/login1")
+    @ResponseBody
+    public Map<String,Object> login1() {
+        User user = new User("","","");
+        return null;
+    }
+
+    @RequestMapping("/login2")
+    @ResponseBody
+    public Map<String,Object> login2() {
+        return null;
+    }
 }
